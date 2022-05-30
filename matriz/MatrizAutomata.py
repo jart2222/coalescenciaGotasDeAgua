@@ -15,6 +15,8 @@ class MatrizAutomata:
         self.a = np.zeros((self.dim, self.dim))
         self.arregloEnteros1 = [*range(-1, 1 + 1, 1)]
         self.arregloEnteros2 = [*range(-1, 1 + 1, 1)]
+        self.listaDeTodosLosAutomatas = []
+        self.copiaListaDeTodosLosAutomatas = []
 
     def poblarMatriz(self, automata):
         self.a[automata.ubicacionX, automata.ubicacionY] = 1
@@ -22,27 +24,30 @@ class MatrizAutomata:
 
     def mostarListTodosLosAutomatas(self):
         print("====metodo mostar list Todos los automatas")
-        for automata in self.listaDeTodosLosAutomatas:
+        for automata in self.copiaListaDeTodosLosAutomatas:
             print(f'({automata.ubicacionX},{automata.ubicacionY})')
 
     def eliminarelementoLTAutomatas(self, automata):
-        for elemento in self.listaDeTodosLosAutomatas:
+        for elemento in self.copiaListaDeTodosLosAutomatas:
             if (elemento.__eq__(automata)):
-                self.listaDeTodosLosAutomatas.remove(elemento)
+                self.copiaListaDeTodosLosAutomatas.remove(elemento)
 
     def detectarUbicacionAutomatas(self):
         self.ubicacionAutomata = np.where(self.a == 1)
-        self.listaDeTodosLosAutomatas = []
+
         for j in range(len(self.ubicacionAutomata[0])):
-            self.listaDeTodosLosAutomatas.append(Automata(self.ubicacionAutomata[0][j], self.ubicacionAutomata[1][j]));
+            self.listaDeTodosLosAutomatas.append(Automata(self.ubicacionAutomata[0][j], self.ubicacionAutomata[1][j]))
+            self.copiaListaDeTodosLosAutomatas.append(Automata(self.ubicacionAutomata[0][j], self.ubicacionAutomata[1][j]))
 
     def formarArregloDeAutomomatas(self):
-        self.copiasAutomatas=self.listaDeTodosLosAutomatas
-        for elementoDeListaTodosLosAutomatas in self.copiasAutomatas:
-            self.mostarListTodosLosAutomatas()
-            listaDeAutomatas = ListaDeAutomatas()
-            self.dectarVecinoAutomata(listaDeAutomatas, elementoDeListaTodosLosAutomatas)
-            listaDeAutomatas.contarAutomatas()
+        for elementoDeListaTodosLosAutomatas in self.listaDeTodosLosAutomatas:
+            for automataCopia in self.copiaListaDeTodosLosAutomatas:
+                if(elementoDeListaTodosLosAutomatas.__eq__(automataCopia)):
+                    listaDeAutomatas = ListaDeAutomatas()
+                    self.dectarVecinoAutomata(listaDeAutomatas, elementoDeListaTodosLosAutomatas)
+                    listaDeAutomatas.contarAutomatas()
+                else:
+                    continue;
 
 
 
@@ -70,6 +75,7 @@ class MatrizAutomata:
                     if (i == 0 and j == 0):
                         listaDeAutomatas.checharExistenciaAutomata(elemento)
                         self.eliminarelementoLTAutomatas(elemento)
+                        continue
 
                     if (self.a[elemento.ubicacionX + i, elemento.ubicacionY + j] == 1):
                         automota2 = Automata(elemento.ubicacionX + i, elemento.ubicacionY + j)

@@ -15,7 +15,7 @@ x11=Automata(7,5)
 x12=Automata(7,4)
 x13=Automata(9,9)
 x14=Automata(9,8)
-matriz=MatrizAutomata(15);
+matriz=MatrizAutomata(12);
 matriz.poblarMatriz(x1)\
     .poblarMatriz(x2)\
     .poblarMatriz(x3)\

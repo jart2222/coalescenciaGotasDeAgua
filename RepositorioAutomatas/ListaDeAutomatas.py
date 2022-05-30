@@ -1,4 +1,5 @@
 from RepositorioAutomatas.modelo.Automata import Automata
+import matplotlib.pyplot as plt
 class ListaDeAutomatas:
 
     def __init__(self):
@@ -33,3 +34,16 @@ class ListaDeAutomatas:
         self.automatasTotales=len(self.automatasArreglo);
         print("Total Automatas en la lista: ",self.automatasTotales);
         self.mostrarListAutomata()
+        self.dibujarListaAutomatas()
+
+    def dibujarListaAutomatas(self):
+        self.listaCoordenadasX=[]
+        self.listaCoordenadasY=[]
+        for automata in self.automatasArreglo:
+            self.listaCoordenadasX.append(automata.ubicacionX)
+            self.listaCoordenadasY.append(automata.ubicacionY)
+
+        fig, ax = plt.subplots()
+        ax.axis([-1, 10, -1, 10])
+        ax.plot(self.listaCoordenadasX,self.listaCoordenadasY,"or")
+        plt.show()
