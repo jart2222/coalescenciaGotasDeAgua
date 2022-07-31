@@ -1,5 +1,3 @@
-from RepositorioAutomatas.modelo.Automata import Automata
-import matplotlib.pyplot as plt
 class ListaDeAutomatas:
 
     def __init__(self):

@@ -1,10 +1,10 @@
 from typing import List
 
 import numpy as np
-import random
 import matplotlib.pyplot as plt
-from RepositorioAutomatas.ListaDeAutomatas import ListaDeAutomatas
-from RepositorioAutomatas.modelo.Automata import Automata;
+from modelo.ListaDeAutomatas import ListaDeAutomatas
+from modelo.Automata import Automata;
+from repositorio.MoverAutomata import MoverAutomata
 
 
 class MatrizAutomata:
@@ -19,6 +19,7 @@ class MatrizAutomata:
         self.copiaListaDeTodosLosAutomatas = []
         self.ubicacionAutomata=[];
         self.listaDeListaDeAutomatas=[];
+        self.listaFormatosGrafica=["o","d","v","s"]
 
     def poblarMatriz(self, numeroFila,numeroColumna):
         self.a[numeroFila, numeroColumna] = 1
@@ -94,14 +95,31 @@ class MatrizAutomata:
         print("Arreglo de automatas detectados: ", len(self.listaDeListaDeAutomatas))
         self.listaCoordenadasX = []
         self.listaCoordenadasY = []
+        fig, ax = plt.subplots()
+        ax.axis([-1, 10, -1, 10])
+        contador=0;
         for listaAutomata in self.listaDeListaDeAutomatas:
+
             for automata in listaAutomata.regresarLista():
                 self.listaCoordenadasX.append(automata.ubicacionX)
                 self.listaCoordenadasY.append(automata.ubicacionY)
-
-
-        fig, ax = plt.subplots()
-        ax.axis([-1, 10, -1, 10])
-        ax.plot(self.listaCoordenadasX, self.listaCoordenadasY, "or")
+        ax.plot(self.listaCoordenadasX, self.listaCoordenadasY, self.listaFormatosGrafica[contador])
+        contador = contador + 1;
         plt.show()
+
+    def moverArreglo(self):
+        moverAutomatas=MoverAutomata()
+        moverAutomatas.moverElementosArreglo(self.listaDeListaDeAutomatas)
+
+    def actualizarMatriz(self):
+        self.a = np.zeros((self.dim, self.dim))
+        for automata in self.listaDeTodosLosAutomatas:
+            self.a[automata.ubicacionX, automata.ubicacionY] = 1
+        self.listaDeTodosLosAutomatas = []
+        self.copiaListaDeTodosLosAutomatas = []
+        self.ubicacionAutomata = [];
+        self.listaDeListaDeAutomatas = [];
+
+
+
 
