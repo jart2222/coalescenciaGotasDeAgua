@@ -10,10 +10,3 @@ class Automata:
     def __eq__(self, automata):
         return (self.ubicacionX==automata.ubicacionX and self.ubicacionY==automata.ubicacionY)
 
-
-
-
-
-
-
-

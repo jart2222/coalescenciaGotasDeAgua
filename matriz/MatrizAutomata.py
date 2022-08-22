@@ -9,12 +9,13 @@ from repositorio.MoverAutomata import MoverAutomata
 
 class MatrizAutomata:
     listaDeTodosLosAutomatas: List[Automata]
+    contadorImagen=0;
 
     def __init__(self, dim):
         self.dim = dim
         self.a = np.zeros((self.dim, self.dim))
-        self.arregloEnteros1 = [*range(-1, 1 + 1, 1)]
-        self.arregloEnteros2 = [*range(-1, 1 + 1, 1)]
+        self.arregloEnteros1 = [*range(-1, 2, 1)]
+        self.arregloEnteros2 = [*range(-1, 2, 1)]
         self.listaDeTodosLosAutomatas = []
         self.copiaListaDeTodosLosAutomatas = []
         self.ubicacionAutomata=[];
@@ -42,13 +43,13 @@ class MatrizAutomata:
             self.copiaListaDeTodosLosAutomatas.append(Automata(self.ubicacionAutomata[0][j], self.ubicacionAutomata[1][j]))
 
     def formarArregloDeAutomomatas(self):
-        for elementoDeListaTodosLosAutomatas in self.listaDeTodosLosAutomatas:
+        for AutomataLista in self.listaDeTodosLosAutomatas:
             for automataCopia in self.copiaListaDeTodosLosAutomatas:
-                if(elementoDeListaTodosLosAutomatas.__eq__(automataCopia)):
+                if(AutomataLista.__eq__(automataCopia)):
                     listaDeAutomatas = ListaDeAutomatas()
-                    self.dectarVecinoAutomata(listaDeAutomatas, elementoDeListaTodosLosAutomatas)
+                    self.dectarVecinoAutomata(listaDeAutomatas, AutomataLista)
                     self.listaDeListaDeAutomatas.append(listaDeAutomatas);
-                    listaDeAutomatas.contarAutomatas()
+                    ##listaDeAutomatas.contarAutomatas()
                 else:
                     continue;
 
@@ -96,25 +97,26 @@ class MatrizAutomata:
         self.listaCoordenadasX = []
         self.listaCoordenadasY = []
         fig, ax = plt.subplots()
-        ax.axis([-1, 10, -1, 10])
-        contador=0;
+        ax.axis([-1, 15, -1, 15])
+        contador=0
         for listaAutomata in self.listaDeListaDeAutomatas:
-
             for automata in listaAutomata.regresarLista():
                 self.listaCoordenadasX.append(automata.ubicacionX)
                 self.listaCoordenadasY.append(automata.ubicacionY)
         ax.plot(self.listaCoordenadasX, self.listaCoordenadasY, self.listaFormatosGrafica[contador])
-        contador = contador + 1;
-        plt.show()
+        plt.savefig(f"fotosEtapa\\Etapa_{MatrizAutomata.contadorImagen}.png")
+        MatrizAutomata.contadorImagen=MatrizAutomata.contadorImagen+1;
 
     def moverArreglo(self):
         moverAutomatas=MoverAutomata()
         moverAutomatas.moverElementosArreglo(self.listaDeListaDeAutomatas)
 
+
     def actualizarMatriz(self):
         self.a = np.zeros((self.dim, self.dim))
-        for automata in self.listaDeTodosLosAutomatas:
-            self.a[automata.ubicacionX, automata.ubicacionY] = 1
+        for listaAutomata in self.listaDeListaDeAutomatas:
+            for automata in listaAutomata.regresarLista():
+                self.a[automata.ubicacionX, automata.ubicacionY] = 1
         self.listaDeTodosLosAutomatas = []
         self.copiaListaDeTodosLosAutomatas = []
         self.ubicacionAutomata = [];

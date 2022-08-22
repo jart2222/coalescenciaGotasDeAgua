@@ -1,9 +1,9 @@
 import random
 from matriz.MatrizAutomata import MatrizAutomata
-matriz=MatrizAutomata(15);
+matriz=MatrizAutomata(20);
 
-for _ in range(10):
-    matriz.poblarMatriz(random.randint(0,10),random.randint(0,10))
+for _ in range(4):
+    matriz.poblarMatriz(random.randint(0,5),random.randint(0,5))
 
 matriz.detectarUbicacionAutomatas()
 matriz.formarArregloDeAutomomatas()
