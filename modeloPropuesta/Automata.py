@@ -1,4 +1,4 @@
-class AutomataPropuesta:
+class Automata:
 
     def __init__(self, ubicacionX, ubicacionY,dimension):
         self.estado=0;

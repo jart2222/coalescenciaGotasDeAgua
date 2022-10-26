@@ -1,6 +1,6 @@
-from modeloPropuesta.AutomataPropuesta import AutomataPropuesta
+from modeloPropuesta.Automata import Automata
 
-class ListaAutomatasPropuesta:
+class ListaAutomatas:
     def __init__(self):
         self.automatasContenidos = [];
         self.tamano = len(self.automatasContenidos);
@@ -10,10 +10,12 @@ class ListaAutomatasPropuesta:
         if len(self.automatasContenidos)==0:           # Si la lista esta vacia lo añade
             self.automatasContenidos.append(automataPropuesta);
         else:
-            if automataPropuesta not in self.automatasContenidos: #Si el automata no esta contenido lo añade
+            if(self.automataEsConenido()!= False):#Si el automata no esta contenido lo añade
                 self.automatasContenidos.append(automataPropuesta);
 
-
+    def automataEsConenido(self, automataPropuesta): #busca si el automata ya existe en la lista
+        if automataPropuesta  in self.automatasContenidos:
+            return True;
     def movimientoAsignacion(self,movimientoX,movimientoY):     #Le asigna el mismo movimiento a todos los automatas contenidos
         for automataPropuesta in self.automatasContenidos:
             automataPropuesta.asignacionMovimientoAutomata(movimientoX,movimientoY)
@@ -27,6 +29,8 @@ class ListaAutomatasPropuesta:
         for automataPropuesta in self.automatasContenidos:
             automataPropuesta.moverAutomata();
 
+    def __eq__(self, listaAutomatas):
+        return self.automatasContenidos==listaAutomatas
 
 
 

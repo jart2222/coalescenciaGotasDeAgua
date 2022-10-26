@@ -4,17 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="876946a6-3dab-497a-98f1-fd3bcc67e32f" name="Changes" comment="Agregue comportamiento cuando la etapa sea 1,2,3 y 4, ademas de que se creo una carpeta donde se guardan las imagenes automaticamente">
-      <change afterPath="$PROJECT_DIR$/modeloPropuesta/ListaAutomatasPropuesta.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modeloPropuesta/Matriz.py" afterDir="false" />
+    <list default="true" id="876946a6-3dab-497a-98f1-fd3bcc67e32f" name="Changes" comment="Se cambio la contruccion del codigo en general, ahora son 3 clases, una matriz, que contiene lista de automatas, que dichas listas contienen a objetos de tipo Automata.&#10;&#10;========Nota======&#10;-Comportamiento toroidal CUMPLIDO&#10;-Error en revision de matriz &#10;-Falta la union de matrices">
+      <change afterPath="$PROJECT_DIR$/main2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/modeloPropuesta/ListaAutomatasUnion.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/matriz/MatrizAutomata.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/matriz/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainPropuesta.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelo/Automata.py" beforeDir="false" afterPath="$PROJECT_DIR$/modeloPropuesta/AutomataPropuesta.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelo/ListaDeAutomatas.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modelo/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/modeloPropuesta/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositorio/MoverAutomata.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainPropuesta.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modeloPropuesta/AutomataPropuesta.py" beforeDir="false" afterPath="$PROJECT_DIR$/modeloPropuesta/Automata.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modeloPropuesta/ListaAutomatasPropuesta.py" beforeDir="false" afterPath="$PROJECT_DIR$/modeloPropuesta/ListaAutomatas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modeloPropuesta/Matriz.py" beforeDir="false" afterPath="$PROJECT_DIR$/modeloPropuesta/Matriz.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,71 +65,8 @@
       <recent name="$PROJECT_DIR$/RepositorioAutomatas/modelo" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.mainPropuesta">
-    <configuration name="ListaAutomatasPropuesta" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="MultiAutomata" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/modeloPropuesta" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/modeloPropuesta/ListaAutomatasPropuesta.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Matriz" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="MultiAutomata" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/modeloPropuesta" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/modeloPropuesta/Matriz.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="MultiAutomata" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Users\jart2\AppData\Local\Programs\Python\Python310\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="mainPropuesta" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.main2">
+    <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="MultiAutomata" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -144,7 +78,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mainPropuesta.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -153,7 +87,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pruebaModulo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="main2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="MultiAutomata" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -165,7 +99,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pruebaModulo.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -174,20 +108,10 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <list>
-      <item itemvalue="Python.ListaAutomatasPropuesta" />
-      <item itemvalue="Python.Matriz" />
-      <item itemvalue="Python.mainPropuesta" />
-      <item itemvalue="Python.pruebaModulo" />
-      <item itemvalue="Python.main" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.mainPropuesta" />
-        <item itemvalue="Python.Matriz" />
-        <item itemvalue="Python.main" />
-        <item itemvalue="Python.ListaAutomatasPropuesta" />
-        <item itemvalue="Python.pruebaModulo" />
+        <item itemvalue="Python.main2" />
+        <item itemvalue="Python.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -228,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661140479073</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Se cambio la contruccion del codigo en general, ahora son 3 clases, una matriz, que contiene lista de automatas, que dichas listas contienen a objetos de tipo Automata.&#10;&#10;========Nota======&#10;-Comportamiento toroidal CUMPLIDO&#10;-Error en revision de matriz &#10;-Falta la union de matrices">
+      <created>1664170454106</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1664170454106</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -247,7 +178,8 @@
     <MESSAGE value="Se crear un arreglo de los arreglos detectados despues de la primera inspeccion, ademas ahora las ubicaciones de los automatas son al azar" />
     <MESSAGE value="Se agrego una funcion de actualizar y una clase que es la que dicta el moviento de cada automata" />
     <MESSAGE value="Agregue comportamiento cuando la etapa sea 1,2,3 y 4, ademas de que se creo una carpeta donde se guardan las imagenes automaticamente" />
-    <option name="LAST_COMMIT_MESSAGE" value="Agregue comportamiento cuando la etapa sea 1,2,3 y 4, ademas de que se creo una carpeta donde se guardan las imagenes automaticamente" />
+    <MESSAGE value="Se cambio la contruccion del codigo en general, ahora son 3 clases, una matriz, que contiene lista de automatas, que dichas listas contienen a objetos de tipo Automata.&#10;&#10;========Nota======&#10;-Comportamiento toroidal CUMPLIDO&#10;-Error en revision de matriz &#10;-Falta la union de matrices" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se cambio la contruccion del codigo en general, ahora son 3 clases, una matriz, que contiene lista de automatas, que dichas listas contienen a objetos de tipo Automata.&#10;&#10;========Nota======&#10;-Comportamiento toroidal CUMPLIDO&#10;-Error en revision de matriz &#10;-Falta la union de matrices" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
