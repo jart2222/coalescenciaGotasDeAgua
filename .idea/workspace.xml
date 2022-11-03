@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="876946a6-3dab-497a-98f1-fd3bcc67e32f" name="Changes" comment="Se cambio la contruccion del codigo en general, ahora son 3 clases, una matriz, que contiene lista de automatas, que dichas listas contienen a objetos de tipo Automata.&#10;&#10;========Nota======&#10;-Comportamiento toroidal CUMPLIDO&#10;-Error en revision de matriz &#10;-Falta la union de matrices">
-      <change afterPath="$PROJECT_DIR$/main2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modeloPropuesta/ListaAutomatasUnion.py" afterDir="false" />
+    <list default="true" id="876946a6-3dab-497a-98f1-fd3bcc67e32f" name="Changes" comment="Se agrego la funcion de union de listas de automatas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainPropuesta.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modeloPropuesta/AutomataPropuesta.py" beforeDir="false" afterPath="$PROJECT_DIR$/modeloPropuesta/Automata.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modeloPropuesta/ListaAutomatasPropuesta.py" beforeDir="false" afterPath="$PROJECT_DIR$/modeloPropuesta/ListaAutomatas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modeloPropuesta/ListaAutomatas.py" beforeDir="false" afterPath="$PROJECT_DIR$/modeloPropuesta/ListaAutomatas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modeloPropuesta/ListaAutomatasUnion.py" beforeDir="false" afterPath="$PROJECT_DIR$/modeloPropuesta/ListaAutomatasUnion.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modeloPropuesta/Matriz.py" beforeDir="false" afterPath="$PROJECT_DIR$/modeloPropuesta/Matriz.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,7 +64,7 @@
       <recent name="$PROJECT_DIR$/RepositorioAutomatas/modelo" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main2">
+  <component name="RunManager" selected="Python.Main">
     <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="MultiAutomata" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -110,8 +109,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main2" />
         <item itemvalue="Python.Main" />
+        <item itemvalue="Python.main2" />
       </list>
     </recent_temporary>
   </component>
@@ -159,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664170454106</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Se agrego la funcion de union de listas de automatas">
+      <created>1666747961216</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1666747961216</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -179,7 +185,8 @@
     <MESSAGE value="Se agrego una funcion de actualizar y una clase que es la que dicta el moviento de cada automata" />
     <MESSAGE value="Agregue comportamiento cuando la etapa sea 1,2,3 y 4, ademas de que se creo una carpeta donde se guardan las imagenes automaticamente" />
     <MESSAGE value="Se cambio la contruccion del codigo en general, ahora son 3 clases, una matriz, que contiene lista de automatas, que dichas listas contienen a objetos de tipo Automata.&#10;&#10;========Nota======&#10;-Comportamiento toroidal CUMPLIDO&#10;-Error en revision de matriz &#10;-Falta la union de matrices" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se cambio la contruccion del codigo en general, ahora son 3 clases, una matriz, que contiene lista de automatas, que dichas listas contienen a objetos de tipo Automata.&#10;&#10;========Nota======&#10;-Comportamiento toroidal CUMPLIDO&#10;-Error en revision de matriz &#10;-Falta la union de matrices" />
+    <MESSAGE value="Se agrego la funcion de union de listas de automatas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se agrego la funcion de union de listas de automatas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

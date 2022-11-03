@@ -10,7 +10,7 @@ class ListaAutomatas:
         if len(self.automatasContenidos)==0:           # Si la lista esta vacia lo añade
             self.automatasContenidos.append(automataPropuesta);
         else:
-            if(self.automataEsConenido()!= False):#Si el automata no esta contenido lo añade
+            if(self.automataEsConenido(automataPropuesta)!= False):#Si el automata no esta contenido lo añade
                 self.automatasContenidos.append(automataPropuesta);
 
     def automataEsConenido(self, automataPropuesta): #busca si el automata ya existe en la lista

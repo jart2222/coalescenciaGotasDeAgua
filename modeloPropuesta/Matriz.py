@@ -14,6 +14,7 @@ class Matriz:
     def __init__(self, dim):
         self.dim = dim
         self.a = np.zeros((self.dim, self.dim));
+        self.listaDeListaDeAutomatasContenidosCopia =[];
         self.listaDeAutomatasContenidos=[];
         self.listaDeAutomatasContenidosCopia=[];
         self.listaFormatosGrafica = ["o", "d", "v", "s"]
@@ -64,12 +65,9 @@ class Matriz:
                 self.dectarVecinoAutomata(listaAutomatas, automataEnLista)
 
     def darMovimientoALista(self):
-        self.numeros=[1,0,1,0]
-        contador=0
+
         for listaAutomatas in self.listaDeListaDeAutomatasContenidos:
-            listaAutomatas.movimientoAsignacion(self.numeros[contador],0)
-            contador=contador+1
-            #listaAutomatas.movimientoAsignacion(random.randint(-1, 1),random.randint(-1, 1))
+            listaAutomatas.movimientoAsignacion(random.randint(-1, 1),random.randint(-1, 1))
 
     def nuevaMatriz(self):
         self.a = np.zeros((self.dim, self.dim));
@@ -77,29 +75,46 @@ class Matriz:
             for automata in listaAutomatas.automatasContenidos:
                 self.poblarMatriz(automata.ubicacionX, automata.ubicacionY)
 
-
     def detectarUniones(self):
-        for listaAutomatas in self.listaDeListaDeAutomatasContenidos:
-            for automata in listaAutomatas.automatasContenidos:
+        for listaAutomatas in self.listaDeListaDeAutomatasContenidos:#Por cada lista
+            for automata in listaAutomatas.automatasContenidos: #por cada automata en lista
+                validoEliminar=True;
                 for i in np.array(self.arregloEnteros1):
                     for j in np.array(self.arregloEnteros2):
-                        if (self.a[automata.ubicacionX + i, automata.ubicacionY + j] == 1):
+                        if (self.detectarVecino(automata.ubicacionX + i, automata.ubicacionY + j)): #si encuentra un vecino de automata
                             automatadetectado=Automata(automata.ubicacionX + i,automata.ubicacionY + j,self.dim)
-                            if (listaAutomatas.__eq__(self.automataContenidoLista(automatadetectado))): # Si el vecino ya pertence a la lista lo ignora
+                            if (listaAutomatas.automataEsConenido(automatadetectado)): # Si el vecino ya pertence a la lista lo ignora
                                 continue;
                             else:
-                                listaAutomatasUnion=ListaAutomatasUnion(listaAutomatas, self.automataContenidoLista(automatadetectado));
-                                listaAutomatasUnion.unirListas()
-                                listaAutomatasUnion.mostarUbicacionAutomatasEnListas()
-        pass
+                                validoEliminar=self.unionDeDosListas(listaAutomatas,automatadetectado,validoEliminar)
 
-    def automataContenidoLista(self, automata):
+
+    def detectarVecino(self,buscarX,buscarY):
+        if(buscarX<=0):
+            buscarX=self.dim-1;
+        if (buscarX >= self.dim):
+            buscarX = 0;
+        if (buscarY <= 0):
+            buscarY = self.dim - 1;
+        if (buscarY >= self.dim):
+            buscarY = 0;
+
+        return self.a[buscarX, buscarY] == 1 ;
+
+    def unionDeDosListas(self, listaAutomatas,automatadetectado, validoEliminar): # se encarga de unir 2 listas
+        listaEvaluarSiEsContenido = self.automataContenidoLista(automatadetectado)
+        listaAutomatasUnion = ListaAutomatasUnion(listaAutomatas,listaEvaluarSiEsContenido);  # crea lista de union de listas
+        listaAutomatasUnion.unirListas()  # une la listas
+        self.listaDeListaDeAutomatasContenidos.remove(listaEvaluarSiEsContenido)
+        if validoEliminar:
+            self.listaDeListaDeAutomatasContenidos.remove(listaAutomatas)
+        self.listaDeListaDeAutomatasContenidos.append(listaAutomatasUnion)  # agrega a la lista general
+        return False
+
+    def automataContenidoLista(self, automata): #retorna la lista del automata que se busca
         for listaAutomatas in self.listaDeListaDeAutomatasContenidos:
             if automata in listaAutomatas.automatasContenidos:
                 return listaAutomatas;
-
-
-
     def obtenerImagenMatriz(self):
         self.listaCoordenadasX = []
         self.listaCoordenadasY = []
@@ -118,40 +133,35 @@ class Matriz:
     def moverListasContenidas(self):
         for listaAutomatas in self.listaDeListaDeAutomatasContenidos:
             tamanoLista=len(listaAutomatas.automatasContenidos)
-            contadorEtapa=self.contadorImagen
 
-            if (tamanoLista==1):
+            if (tamanoLista==1): #se ejecutan en cada etapa
                 listaAutomatas.moverLista()
                 continue
 
-            if ((tamanoLista%2==0 or  contadorEtapa%4==0 ) and (contadorEtapa%2==0)):
-                if(contadorEtapa==2 and tamanoLista==4):
-                    continue
+            if tamanoLista%2==0 and self.contadorImagen%2==0:
                 listaAutomatas.moverLista()
                 continue
 
-            if ((tamanoLista%3==0 or tamanoLista%6==0) and (contadorEtapa%3==0)):
-                if (contadorEtapa == 3 and tamanoLista==6):
-                    continue
+            if tamanoLista%3==0 and self.contadorImagen%3==0:
                 listaAutomatas.moverLista()
-                continue;
+                continue
 
-            if ((tamanoLista%5==0) and (contadorEtapa%5==0)):
+            if tamanoLista%4==0 and self.contadorImagen%4==0:
                 listaAutomatas.moverLista()
-                continue;
+                continue
 
-            if ((tamanoLista%7==0) and (contadorEtapa%7==0)):
+            if tamanoLista%5==0 and self.contadorImagen%5==0:
                 listaAutomatas.moverLista()
-                continue;
+                continue
+            if tamanoLista%6==0 and self.contadorImagen%6==0:
+                listaAutomatas.moverLista()
+                continue
 
-            if(tamanoLista>7):
-                #agregar funcion para eliminar automata y agregar nuevos automatas
-                continue;
-
-
-
-
-
-
-
+            if tamanoLista%7==0 and self.contadorImagen%7==0:
+                listaAutomatas.moverLista()
+                continue
+    def pintarListaDeListaDeAutomatas(self):
+        print("Lista de automatas")
+        for listaAutomatas in self.listaDeListaDeAutomatasContenidos:
+            listaAutomatas.mostarUbicacionAutomatasEnListas();
 
