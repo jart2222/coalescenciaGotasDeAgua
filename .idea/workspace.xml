@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="876946a6-3dab-497a-98f1-fd3bcc67e32f" name="Changes" comment="Se agrego la funcion de union de listas de automatas">
+    <list default="true" id="876946a6-3dab-497a-98f1-fd3bcc67e32f" name="Changes" comment="Union de automatas casi terminada">
+      <change afterPath="$PROJECT_DIR$/servicios/Imagen.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/servicios/Video.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/modeloPropuesta/ListaAutomatas.py" beforeDir="false" afterPath="$PROJECT_DIR$/modeloPropuesta/ListaAutomatas.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modeloPropuesta/ListaAutomatasUnion.py" beforeDir="false" afterPath="$PROJECT_DIR$/modeloPropuesta/ListaAutomatasUnion.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/modeloPropuesta/Matriz.py" beforeDir="false" afterPath="$PROJECT_DIR$/modeloPropuesta/Matriz.py" afterDir="false" />
     </list>
@@ -37,6 +37,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="26IoBEx8xW7UKnHT2yDWH4aYfNu" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -107,9 +110,31 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="mainVideo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="MultiAutomata" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mainVideo.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.Main" />
+        <item itemvalue="Python.mainVideo" />
         <item itemvalue="Python.main2" />
       </list>
     </recent_temporary>
@@ -165,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666747961216</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Union de automatas casi terminada">
+      <created>1667451325300</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1667451325300</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -186,7 +218,8 @@
     <MESSAGE value="Agregue comportamiento cuando la etapa sea 1,2,3 y 4, ademas de que se creo una carpeta donde se guardan las imagenes automaticamente" />
     <MESSAGE value="Se cambio la contruccion del codigo en general, ahora son 3 clases, una matriz, que contiene lista de automatas, que dichas listas contienen a objetos de tipo Automata.&#10;&#10;========Nota======&#10;-Comportamiento toroidal CUMPLIDO&#10;-Error en revision de matriz &#10;-Falta la union de matrices" />
     <MESSAGE value="Se agrego la funcion de union de listas de automatas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se agrego la funcion de union de listas de automatas" />
+    <MESSAGE value="Union de automatas casi terminada" />
+    <option name="LAST_COMMIT_MESSAGE" value="Union de automatas casi terminada" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

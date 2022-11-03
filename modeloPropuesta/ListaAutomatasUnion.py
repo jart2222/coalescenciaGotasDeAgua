@@ -14,8 +14,14 @@ class ListaAutomatasUnion(ListaAutomatas):
         for automata in self.listaAutomataUno.automatasContenidos:
             self.anadirAutomata(automata)
 
+
         for automataC in self.listaAutomataDos.automatasContenidos:
             self.anadirAutomata(automataC)
+
+
+
+
+
 
         self.consevarMovimiento()
 

@@ -6,6 +6,7 @@ from matplotlib import pyplot as plt
 from modeloPropuesta.Automata import *
 from modeloPropuesta.ListaAutomatas import ListaAutomatas
 from modeloPropuesta.ListaAutomatasUnion import ListaAutomatasUnion
+from servicios.Imagen import Imagen
 
 
 class Matriz:
@@ -17,7 +18,6 @@ class Matriz:
         self.listaDeListaDeAutomatasContenidosCopia =[];
         self.listaDeAutomatasContenidos=[];
         self.listaDeAutomatasContenidosCopia=[];
-        self.listaFormatosGrafica = ["o", "d", "v", "s"]
         self.listaDeListaDeAutomatasContenidos=[]
         self.arregloEnteros1 = [*range(-1, 2, 1)]
         self.arregloEnteros2 = [*range(-1, 2, 1)]
@@ -54,8 +54,9 @@ class Matriz:
         tamanoOriginal=len(listaAutomatas.automatasContenidos)
         for i in np.array(self.arregloEnteros1):
             for j in np.array(self.arregloEnteros2):
-                if (self.a[automata.ubicacionX + i, automata.ubicacionY + j] == 1):
-                    automata=Automata(automata.ubicacionX + i, automata.ubicacionY + j, self.dim)
+                listaParametros=self.detectarVecino(automata.ubicacionX + i, automata.ubicacionY + j)
+                if listaParametros[0]==True:
+                    automata=Automata( listaParametros[1],listaParametros[2], self.dim)
                     for automata2 in self.listaDeAutomatasContenidosCopia:
                         if(automata2.__eq__(automata)):
                             listaAutomatas.anadirAutomata(automata2)
@@ -77,16 +78,17 @@ class Matriz:
 
     def detectarUniones(self):
         for listaAutomatas in self.listaDeListaDeAutomatasContenidos:#Por cada lista
+            validoEliminar = True;
             for automata in listaAutomatas.automatasContenidos: #por cada automata en lista
-                validoEliminar=True;
                 for i in np.array(self.arregloEnteros1):
                     for j in np.array(self.arregloEnteros2):
-                        if (self.detectarVecino(automata.ubicacionX + i, automata.ubicacionY + j)): #si encuentra un vecino de automata
-                            automatadetectado=Automata(automata.ubicacionX + i,automata.ubicacionY + j,self.dim)
+                        listaParametros = self.detectarVecino(automata.ubicacionX + i, automata.ubicacionY + j)
+                        if listaParametros[0]==True: #si encuentra un vecino de automata
+                            automatadetectado=Automata(listaParametros[1] ,listaParametros[2],self.dim)
                             if (listaAutomatas.automataEsConenido(automatadetectado)): # Si el vecino ya pertence a la lista lo ignora
                                 continue;
                             else:
-                                validoEliminar=self.unionDeDosListas(listaAutomatas,automatadetectado,validoEliminar)
+                                validoEliminar=self.unionDeDosListas(listaAutomatas,automatadetectado,validoEliminar, automata)
 
 
     def detectarVecino(self,buscarX,buscarY):
@@ -99,36 +101,46 @@ class Matriz:
         if (buscarY >= self.dim):
             buscarY = 0;
 
-        return self.a[buscarX, buscarY] == 1 ;
+        listaValoresObtenidos=[]
+        listaValoresObtenidos.append(self.a[buscarX, buscarY] == 1)
+        listaValoresObtenidos.append(buscarX)
+        listaValoresObtenidos.append(buscarY)
+        return listaValoresObtenidos;
 
-    def unionDeDosListas(self, listaAutomatas,automatadetectado, validoEliminar): # se encarga de unir 2 listas
+    def unionDeDosListas(self, listaAutomatas,automatadetectado, validoEliminar, automata): # se encarga de unir 2 listas
         listaEvaluarSiEsContenido = self.automataContenidoLista(automatadetectado)
-        listaAutomatasUnion = ListaAutomatasUnion(listaAutomatas,listaEvaluarSiEsContenido);  # crea lista de union de listas
-        listaAutomatasUnion.unirListas()  # une la listas
-        self.listaDeListaDeAutomatasContenidos.remove(listaEvaluarSiEsContenido)
-        if validoEliminar:
-            self.listaDeListaDeAutomatasContenidos.remove(listaAutomatas)
-        self.listaDeListaDeAutomatasContenidos.append(listaAutomatasUnion)  # agrega a la lista general
-        return False
+        if(listaEvaluarSiEsContenido is not None):
+            listaAutomatasUnion = ListaAutomatasUnion(listaAutomatas,listaEvaluarSiEsContenido);  # crea lista de union de listas
+            listaAutomatasUnion.unirListas()  # une la listas
+            self.listaDeListaDeAutomatasContenidos.remove(listaEvaluarSiEsContenido)
 
+            if validoEliminar:
+                self.listaDeListaDeAutomatasContenidos.remove(listaAutomatas)
+            self.listaDeListaDeAutomatasContenidos.append(listaAutomatasUnion)  # agrega a la lista general
+            return False
+        else:
+            print(f"Lista no encontrada \n se analiza el Automata ({automata.movimientoY},{automata.movimientoY})")
+            print(f"Y se encontro un vecino en  ({automatadetectado.movimientoX},{automatadetectado.movimientoY})")
     def automataContenidoLista(self, automata): #retorna la lista del automata que se busca
         for listaAutomatas in self.listaDeListaDeAutomatasContenidos:
             if automata in listaAutomatas.automatasContenidos:
                 return listaAutomatas;
-    def obtenerImagenMatriz(self):
-        self.listaCoordenadasX = []
-        self.listaCoordenadasY = []
-        fig, ax = plt.subplots()
-        ax.axis([0, self.dim, 0, self.dim])
-
-        for listaAutomatas in self.listaDeListaDeAutomatasContenidos:
-            for automata in listaAutomatas.automatasContenidos:
-                self.listaCoordenadasX.append(automata.ubicacionX)
-                self.listaCoordenadasY.append(automata.ubicacionY)
-        ax.plot(self.listaCoordenadasX, self.listaCoordenadasY, self.listaFormatosGrafica[1])
-        plt.savefig(f"fotosEtapa\\Etapa_{self.contadorImagen}.png")
-        plt.close()
-        self.contadorImagen=self.contadorImagen+1;
+    #def obtenerImagenMatriz(self):
+        #imagen=Imagenes(self)
+        #imagen.obtenerImagenMatriz()
+        # self.listaCoordenadasX = []
+        # self.listaCoordenadasY = []
+        # fig, ax = plt.subplots()
+        # ax.axis([0, self.dim, 0, self.dim])
+        #
+        # for listaAutomatas in self.listaDeListaDeAutomatasContenidos:
+        #     for automata in listaAutomatas.automatasContenidos:
+        #         self.listaCoordenadasX.append(automata.ubicacionX)
+        #         self.listaCoordenadasY.append(automata.ubicacionY)
+        # ax.plot(self.listaCoordenadasX, self.listaCoordenadasY, self.listaFormatosGrafica[0])
+        # plt.savefig(f"fotosEtapa\\Etapa_{self.contadorImagen}.png")
+        # plt.close()
+        # self.contadorImagen=self.contadorImagen+1;
 
     def moverListasContenidas(self):
         for listaAutomatas in self.listaDeListaDeAutomatasContenidos:
@@ -164,4 +176,5 @@ class Matriz:
         print("Lista de automatas")
         for listaAutomatas in self.listaDeListaDeAutomatasContenidos:
             listaAutomatas.mostarUbicacionAutomatasEnListas();
+
 
